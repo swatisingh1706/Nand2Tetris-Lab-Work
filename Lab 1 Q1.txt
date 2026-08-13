@@ -1,0 +1,46 @@
+1. NOT GATE
+
+Boolean Expression:
+NOT(A) = A bar
+
+HDL CODE:
+CHIP Not {
+    IN in;
+    OUT out;
+
+    PARTS:
+    Nand(a=in, b=in, out=out);
+}
+
+
+2. AND GATE
+
+Boolean Expression:
+AND(A,B) = A . B
+
+HDL CODE:
+CHIP And {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Nand(a=a, b=b, out=temp);
+    Nand(a=temp, b=temp, out=out);
+}
+
+
+3. OR GATE
+
+Boolean Expression:
+OR(A,B) = A+B
+
+HDL CODE:
+CHIP Or {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Nand(a=a, b=a, out=notA);
+    Nand(a=b, b=b, out=notB);
+    Nand(a=notA, b=notB, out=out);
+}
